@@ -1,0 +1,56 @@
+<p-toast key="toast"></p-toast>
+<section class="main">
+  <p-messages [(value)]="msgs"></p-messages>
+  <form novalidate [formGroup]="formGroup" (ngSubmit)="idEdit? update() : save()">
+    <div class="ui-g ui-fluid form-group">
+      <div class="ui-g-12 ui-md-4">
+        <label>Name</label>
+        <input type="text" formControlName="name" pInputText placeholder="Product name" [ngClass]="{'invalid-field': submitted && formGroup.controls.name.invalid}" />
+      </div>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">
+          <label>Unit of Measurement</label>
+          <p-dropdown [autoWidth]="false" [options]="units" formControlName="unitMeasurement" (onChange)="changeUnit($event)" [ngClass]="{'invalid-field': submitted && formGroup.controls.unitMeasurement.invalid}"></p-dropdown>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+          <label>Amount</label>
+          <div class="ui-inputgroup">
+              <input type="text" pInputText [pKeyFilter]="keyAmount"
+                placeholder="amount" formControlName="amount" [attr.disabled]='amountDisabled' [ngClass]="{'invalid-field': submitted && formGroup.controls.amount.invalid}">
+              <span class="ui-inputgroup-addon">{{abbreviationUnit}}</span>
+          </div>
+      </div>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">
+          <label>Price</label>
+          <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">R$</span>
+              <input type="text" #price currencyMask pInputText placeholder="Price" formControlName="price" [options]="optionCurreny" [ngClass]="{'invalid-field': submitted && formGroup.controls.price.invalid}"
+                (keyup)="verifyPrice(price)">
+          </div>
+      </div>
+      <div class="ui-g-12 ui-md-4 flex">
+          <p-checkbox  formControlName="isPerishable" binary="true" label="Perishable product" (onChange)="changeIsPerishable($event)" [ngClass]="{'invalid-field': submitted && formGroup.controls.isPerishable.invalid}"></p-checkbox>
+      </div>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">
+          <label>Expiration date</label>
+          <p-calendar [showIcon]="true" formControlName="expirationDate" [dateFormat]="dateFormat" [ngClass]="{'invalid-field': submitted && formGroup.controls.expirationDate.invalid}"
+            (onSelect)="validDate($event)"></p-calendar>
+      </div>
+
+      <div class="ui-g-12 ui-md-4">
+          <label>Date of manufacture</label>
+          <p-calendar [showIcon]="true" formControlName="dateManufacture" [dateFormat]="dateFormat" [ngClass]="{'invalid-field': submitted && formGroup.controls.dateManufacture.invalid}"
+            [maxDate]="maxDate"></p-calendar>
+      </div>
+    </div>
+    <div class="container-control">
+      <button pButton type="submit" label="Save"></button>
+      <a [routerLink]="" (click)="cancel()">Cancel</a>
+    </div>
+  </form>
+</section>

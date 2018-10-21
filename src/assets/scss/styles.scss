@@ -1,0 +1,125 @@
+@import 'assets/scss/variables.scss';
+
+html,
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Arial Negrito', 'Arial Normal', 'Arial';
+  background-color: $white;
+  color: $darkest-gray;
+
+  .text-left { text-align: left !important; }
+  .text-center { text-align: center !important; }
+  .text-right { text-align: right !important; }
+
+  .no-margin { margin: 0 !important; }
+
+  .main {
+    padding: 0 24px  24px;
+    margin-bottom: 20px;
+  }
+
+  .invalid-field {
+    border: 1px solid $invalid !important;
+
+    .ui-dropdown, .ui-chkbox-box,{
+      border: 1px solid $invalid !important;
+    }
+
+    .ui-calendar {
+      .ui-inputtext {
+        border: 1px solid $invalid !important;
+      }
+    }
+  }
+
+  .ui-chkbox-label { font-size: 13px; }
+
+  table {
+    tbody {
+      tr {
+        td {
+          @extend .text-center;
+
+          .mobile-label {
+            display: none;
+          }
+
+          &:last-child {
+            a {
+              color: $darkest-gray;
+
+              &:hover {
+                color: blue;
+                cursor: pointer;
+              }
+
+              i.icon-actions {
+                font-size: 25px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 959px) {
+  body {
+    .main {
+      table {
+
+        .mobile-label {
+          display: inline-block;
+          text-transform: uppercase;
+          font-size: 13px;
+          color: $darkest-gray;
+          margin-right: 20px;
+          font-weight: 600;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tr {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          height: auto;
+          padding: 10px 0 0;
+          border: 1px solid $gray-table-container;
+          border-radius: 7px;
+          margin-bottom: 18px;
+          background: $white !important;
+
+          td {
+            width: 100% !important;
+            border: 0 !important;
+            padding: 5px 20px !important;
+            text-align: left !important;
+
+            &.last-item-actions {
+              padding: 5px 20px 20px !important;
+            }
+
+            &.actions-table {
+              border-top: 1px solid $gray-table-container !important;
+              text-align: center !important;
+              padding: 15px 0  !important;
+              background: $lighter-gray;
+
+              a { margin: 5px; color: $blue; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import 'assets/scss/variables.scss';
+
+.breadcrumb-container {
+  padding: 24px;
+
+  .title-breadcrumb {
+    font-size: 26px;
+    display: block;
+  }
+
+  .breadcrumb-wrapper {
+    display: inline-block;
+
+    ul.breadcrumb {
+      padding: 0;
+      list-style: none;
+      font-size: 12px;
+      margin: 0;
+      position: relative;
+
+      li {
+        display: inline;
+
+        &+li:before {
+          padding: 8px;
+          vertical-align: -15%;
+        }
+
+        a {
+          color: $darkest-gray;
+          text-decoration: none;
+
+          &:hover {
+            color: $dark-blue;
+            text-decoration: underline;
+          }
+        }
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

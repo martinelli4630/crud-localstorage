@@ -1,0 +1,62 @@
+<section class="main">
+  <p-toast key="toastDelete"></p-toast>
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
+
+  <p-table [value]="products">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Unit</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Perishable</th>
+            <th>Expiration date</th>
+            <th>Date of manufacture</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+        <tr>
+          <td class="text-left">
+            <span class="mobile-label">Name</span>
+            {{product.name}}
+          </td>
+          <td>
+            <span class="mobile-label">Unit</span>
+            {{product.unitMeasurement.name}}
+          </td>
+          <td>
+            <span class="mobile-label">Amount</span>
+            {{product.amount? product.amount : '-'}}
+          </td>
+          <td>
+            <span class="mobile-label">Price</span>
+            {{product.price | currency: 'BRL'}}
+          </td>
+          <td>
+            <span class="mobile-label">Perishable</span>
+            {{product.isPerishable ? 'Yes' : 'No'}}
+          </td>
+          <td>
+            <span class="mobile-label">Expiration Date</span>
+            {{product.expirationDate ? (product.expirationDate | date: 'dd/MM/yyyy') : '-'}}
+          </td>
+          <td class="last-item-actions">
+            <span class="mobile-label">Date of Manufacture</span>
+            {{product.dateManufacture | date: 'dd/MM/yyyy'}}
+          </td>
+          <td class="actions-table">
+            <a [routerLink]="['../edit', rowIndex]"><i class="pi pi-pencil icon-actions"></i></a>
+            <a [routerLink]="" (click)="deleteProduct(rowIndex)"><i class="pi pi-trash icon-actions"></i></a>
+          </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+            <td [attr.colspan]="7" class="text-center">
+                No results.
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</section>

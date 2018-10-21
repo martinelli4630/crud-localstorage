@@ -1,0 +1,19 @@
+.content {
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+
+  .container {
+    max-width: 100%;
+    padding-left: 63px;
+  }
+}
+
+// Mobile
+@media (max-width: 768px) {
+  .content {
+    .container {
+      padding-left: 0;
+    }
+  }
+}

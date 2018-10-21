@@ -1,0 +1,62 @@
+@import 'assets/scss/variables.scss';
+
+nav {
+  position: fixed;
+  z-index: 1;
+  width: 63px;
+  height: 100%;
+  background: $gray-menu;
+
+  -webkit-transition:all linear 0.2s;
+  transition:all linear 0.2s;
+
+  &.toggled-menu {
+    width: 200px;
+  }
+
+  .icon-menu {
+    display: block;
+    width: 100%;
+    background: $purple-menu;
+
+    i {
+      width: initial;
+      height: initial;
+      font-size: 32px;
+      padding: 1.05rem 0.98rem;
+      color: $white;
+    }
+  }
+
+  .links-menu {
+    a {
+      display: flex;
+      align-items: center;
+      color: $white;
+      text-decoration: none;
+      padding: 20px;
+
+      i {
+        font-size: 25px;
+        margin-right: 10px;
+      }
+
+      &:hover {
+        background: $black;
+      }
+    }
+  }
+
+}
+
+// Mobile
+@media (max-width: 768px) {
+  nav {
+    position: absolute;
+    height: auto;
+
+    &.toggled-menu {
+      height: 100%;
+    }
+  }
+}

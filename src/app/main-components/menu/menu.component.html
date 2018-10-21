@@ -1,0 +1,8 @@
+<nav [ngClass]="{'toggled-menu': isOpen }">
+  <div class="icon-menu" (click)="openMenu()"><i class="pi pi-bars"></i></div>
+
+  <div class="links-menu" *ngIf="isOpen">
+    <a routerLink="list" (click)="closeMenu()"><i class="pi pi-list"></i> List Products</a>
+    <a routerLink="new" (click)="closeMenu()"><i class="pi pi-plus"></i> Create Product</a>
+  </div>
+<nav>
